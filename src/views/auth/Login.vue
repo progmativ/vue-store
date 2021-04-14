@@ -41,7 +41,7 @@ export default defineComponent({
       this.$store
         .dispatch("login", { ...this.form })
         .then((res: unknown) => {
-          console.log(res);
+          alert(res);
           this.$router.push("/");
         })
         .catch((error: unknown) => {

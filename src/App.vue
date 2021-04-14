@@ -3,9 +3,36 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
     <router-link to="/login">Login</router-link>
+    <a href="#!" @click="logout()">Logout</a>
+
+    {{ user }}
   </div>
   <router-view />
 </template>
+
+<script lang="ts">
+import { defineComponent } from "@vue/runtime-core";
+import { mapGetters } from "vuex";
+
+export default defineComponent({
+  methods: {
+    logout(): void {
+      this.$store
+        .dispatch("logout")
+        .then((res: unknown) => {
+          console.log(res);
+        })
+        .catch((err: unknown) => {
+          console.log(err);
+        });
+    },
+  },
+
+  computed: {
+    ...mapGetters(["user"]),
+  },
+});
+</script>
 
 <style lang="scss">
 #app {
